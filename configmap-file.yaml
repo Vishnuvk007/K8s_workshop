@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+#defining the key value to be passed in app-config - this will be used in configmap-webapp.yaml
+data:
+  APP_COLOR: blue
