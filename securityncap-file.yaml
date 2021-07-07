@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-test
+spec:
+#to define security context at pod level
+  securityContext:
+#to run pod with user as 1000
+     runAsUser: 1000 
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    command:
+      - "sleep"
+      - "3600"
+#if security context is defined under a container then it superseed pod securityContext
+    securityContext:
+      runAsUser: 1010
+      capabilities:
+        add: ["MAC_ADMIN"]
+       
