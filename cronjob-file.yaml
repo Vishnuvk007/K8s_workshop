@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata: 
+   name: cronjob-app
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+     spec:
+      completions: 4
+      parallelism: 4
+      template:
+        spec:
+         containers:
+         - image: ubuntu
+           name: math-job-ubuntu
+           command: ["expr","3","+","4"]
+         restartPolicy: Never
